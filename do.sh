@@ -18,12 +18,12 @@ mkdir -p cache
 docker run --interactive --tty --rm \
     --env http_proxy=${http_proxy} \
     --env https_proxy=${https_proxy} \
-    --volume $(readlink -f $HOME/Libs):/opt/lib:ro \
-    --volume $(readlink -f ../opencv):/opencv \
-    --volume $(readlink -f ../opencv_extra):/opencv_extra \
-    --volume $(readlink -f ../opencv_contrib):/opencv_contrib \
-    --volume $(readlink -f ../build):/build \
-    --volume $(readlink -f scripts):/scripts \
-    --volume $(readlink -f cache):/cache \
+    --volume $(readlink -f $HOME/Libs):/opt/lib:ro,Z \
+    --volume $(readlink -f ../opencv):/opencv:Z \
+    --volume $(readlink -f ../opencv_extra):/opencv_extra:Z \
+    --volume $(readlink -f ../opencv_contrib):/opencv_contrib:Z \
+    --volume $(readlink -f ../build):/build:Z \
+    --volume $(readlink -f scripts):/scripts:Z \
+    --volume $(readlink -f cache):/cache:Z \
     $IMG \
     /bin/bash
